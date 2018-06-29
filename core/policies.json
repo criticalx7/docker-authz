@@ -1,0 +1,8 @@
+[
+  {
+    "name": "MaxPolicy",
+    "users": ["max-client"],
+    "daemon": "max-daemon-client",
+    "actions": ["docker", "images", "container", "volume"]
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "name": "docker-authz",
+  "version": "1.0.0",
+  "description": "docker-authz plugin",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "devstart": "nodemon app.js"
+  },
+  "author": "Chatchapol Rasameluangon",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}

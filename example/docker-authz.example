@@ -1,0 +1,11 @@
+{
+  "Name": "plugin-name",
+  "Addr": "https://cert-identity/",
+  "TLSConfig": {
+    "InsecureSkipVerify": false,
+    "CAFile": "/path/to/plugin-ca.pem",
+    "CertFile": "/part/to/plugin-cert.pem",
+    "KeyFile": "/part/to/plugin-key.pem"
+  }
+}
+
