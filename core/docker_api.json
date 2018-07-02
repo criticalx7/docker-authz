@@ -1,8 +1,23 @@
 [
   { "pattern": "/build", "method": "POST", "action": "image_build" },
-  { "pattern": "/commit", "method": "POST", "action": "image_commit" },
-  { "pattern": "/version", "method": "GET", "action": "check_version" },
-  { "pattern": "/auth", "method": "POST", "action": "check_auth" },
+  { "pattern": "/commit", "method": "POST", "action": "container_commit" },
+  { "pattern": "/events", "method": "POST", "action": "docker_event" },
+  { "pattern": "/version", "method": "GET", "action": "docker_version" },
+  { "pattern": "/auth", "method": "POST", "action": "docker_auth" },
+  {
+    "pattern": "/containers/.+/wait","method": "POST",
+    "action": "container_wait"
+  },
+  {
+    "pattern": "/containers/.+/resize",
+    "method": "POST",
+    "action": "container_resize"
+  },
+  {
+    "pattern": "/containers/.+/export",
+    "method": "POST",
+    "action": "container_export"
+  },
   {
     "pattern": "/containers/.+/stop",
     "method": "POST",
@@ -29,14 +44,44 @@
     "action": "container_exec"
   },
   {
+    "pattern": "/containers/.+/unpause",
+    "method": "POST",
+    "action": "container_unpase"
+  },
+  {
+    "pattern": "/containers/.+/pause",
+    "method": "POST",
+    "action": "container_pause"
+  },
+  {
     "pattern": "/containers/.+/copy",
     "method": "POST",
     "action": "container_copy"
   },
   {
-    "pattern": "/containers/prune",
+    "pattern": "/containers/.+/archive",
+    "method": "PUT",
+    "action": "container_archive_extract"
+  },
+  {
+    "pattern": "/containers/.+/archive",
+    "method": "HEAD",
+    "action": "container_archive_info"
+  },
+  {
+    "pattern": "/containers/.+/archive",
+    "method": "GET",
+    "action": "container_archive"
+  },
+  {
+    "pattern": "/containers/.+/attach/ws",
+    "method": "GET",
+    "action": "container_attach_websocket"
+  },
+  {
+    "pattern": "/containers/.+/attach",
     "method": "POST",
-    "action": "container_prune"
+    "action": "container_attach"
   },
   {
     "pattern": "/containers/json",
@@ -61,7 +106,17 @@
   {
     "pattern": "/containers/.+/stats",
     "method": "GET",
-    "action": "container_stats"
+    "action": "container_stat"
+  },
+  {
+    "pattern": "/containers/.+/changes",
+    "method": "GET",
+    "action": "container_changes"
+  },
+  {
+    "pattern": "/containers/.+/top",
+    "method": "GET",
+    "action": "container_top"
   },
   {
     "pattern": "/containers/.+/logs",
@@ -73,10 +128,22 @@
     "method": "POST",
     "action": "container_create"
   },
-  { "pattern": "/images/.+./get", "method": "GET", "action": "image_archive" },
-  { "pattern": "/images/search", "method": "GET", "action": "image_search" },
+  {
+    "pattern": "/images/.+./get",
+    "method": "GET",
+    "action": "images_archive"
+  },
+  {
+    "pattern": "/images/search",
+    "method": "GET",
+    "action": "images_search"
+  },
   { "pattern": "/images/.+/tag", "method": "POST", "action": "image_tag" },
-  { "pattern": "/images/.+/json", "method": "GET", "action": "image_inspect" },
+  {
+    "pattern": "/images/.+/json",
+    "method": "GET",
+    "action": "image_inspect"
+  },
   { "pattern": "/images/.+", "method": "DELETE", "action": "image_delete" },
   {
     "pattern": "/images/.+/history",
@@ -84,7 +151,11 @@
     "action": "image_history"
   },
   { "pattern": "/images/.+/push", "method": "POST", "action": "image_push" },
-  { "pattern": "/images/create", "method": "POST", "action": "image_create" },
+  {
+    "pattern": "/images/create",
+    "method": "POST",
+    "action": "image_create"
+  },
   { "pattern": "/images/load", "method": "POST", "action": "image_load" },
   { "pattern": "/images/json", "method": "GET", "action": "image_list" },
   { "pattern": "/_ping", "method": "GET", "action": "docker_ping" },
@@ -101,9 +172,21 @@
   },
   { "pattern": "/volumes/.+", "method": "GET", "action": "volume_inspect" },
   { "pattern": "/volumes", "method": "GET", "action": "volume_list" },
-  { "pattern": "/volumes/create", "method": "POST", "action": "volume_create" },
-  { "pattern": "/volumes/.+", "method": "DELETE", "action": "volume_remove" },
-  { "pattern": "/networks/.+", "method": "GET", "action": "network_inspect" },
+  {
+    "pattern": "/volumes/create",
+    "method": "POST",
+    "action": "volume_create"
+  },
+  {
+    "pattern": "/volumes/.+",
+    "method": "DELETE",
+    "action": "volume_remove"
+  },
+  {
+    "pattern": "/networks/.+",
+    "method": "GET",
+    "action": "network_inspect"
+  },
   { "pattern": "/networks", "method": "GET", "action": "network_list" },
   {
     "pattern": "/networks/create",
@@ -120,5 +203,9 @@
     "method": "POST",
     "action": "network_disconnect"
   },
-  { "pattern": "/networks/.+", "method": "DELETE", "action": "network_remove" }
+  {
+    "pattern": "/networks/.+",
+    "method": "DELETE",
+    "action": "network_remove"
+  }
 ]

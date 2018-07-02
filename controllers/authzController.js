@@ -45,7 +45,7 @@ exports.plugin_authreq = function(req, res) {
     });
     console.log(msg);
   } else {
-    let msg = `\nAction ${action} deined for [${user}] from [${daemon}]\n`;
+    let msg = `\nAction ${action} denied for [${user}] from [${daemon}]\n`;
     res.json({
       Allow: false,
       Msg: msg
